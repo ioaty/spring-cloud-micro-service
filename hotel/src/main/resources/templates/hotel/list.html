@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>hotel list</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h1>酒店列表</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Hotel Name</th>
+            <th>Room</th>
+            <th>Price</th>
+            <th>The Time</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="hotel : ${hotels}">
+            <th scope="row" th:text="${hotel.id}">1</th>
+            <td th:text="${hotel.hotelName}">neo</td>
+            <td th:text="${hotel.room}">Otto</td>
+            <td th:text="${hotel.price}">Otto</td>
+            <td th:text="${hotel.dtime}">6</td>
+            <td><a th:href="@{/toEdit(id=${hotel.id})}">edit</a></td>
+            <td><a th:href="@{/delete(id=${hotel.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
+    </div>
+</div>
+
+</body>
+</html>
